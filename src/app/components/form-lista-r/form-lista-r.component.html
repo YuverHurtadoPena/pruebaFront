@@ -1,0 +1,60 @@
+<form [formGroup]="ListaForm">
+<div class="mb-3">
+
+  <label for="exampleFormControlInput1" class="form-label">Nombre Lista</label>
+  <input type="text" class="form-control" formControlName="nombre"  >
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+  <textarea class="form-control"  rows="3"formControlName="description" ></textarea>
+</div>
+</form>
+
+<button type="button" style="margin: auto;" (click)="shangeStatus()" class="btn btn-info" >{{ bandera? 'Ocultar Formularios de Canciones': 'Mostrar Formularios de Canciones' }}</button>
+<!--Canciones-->
+<div style="display:grid; place-items:center" *ngIf="bandera">
+
+<form [formGroup]="cancionForm" novalidate>
+  <div class="mb-3">
+    <label class="form-label">Titulo</label>
+    <input type="text" class="form-control" formControlName="titulo" >
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Artista</label>
+    <input type="test"formControlName="artista" class="form-control" id="exampleFormControlInput1" >
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Albun</label>
+    <input type="text"formControlName="albun" class="form-control" id="exampleFormControlInput1" >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Año</label>
+    <input type="text"formControlName="anno" class="form-control" id="exampleFormControlInput1" >
+  </div>
+</form>
+<button type="button" class="btn btn-success" (click)=" agregarCancion()">Agregar</button>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th >Titulo</th>
+        <th >Artista</th>
+        <th >Album</th>
+        <th >Año</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listCancion">
+        <th >{{item.titulo}}</th>
+        <td>{{item.artista}}</td>
+        <td>{{item.albun}}</td>
+        <td>{{item.anno}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<button type="button" *ngIf="banderaBoton" (click)="save()" class="btn btn-info">Guardar Lista</button>

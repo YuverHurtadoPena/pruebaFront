@@ -1,0 +1,63 @@
+<a class="texto_color" [routerLink]="['/form']"
+>crear lista
+</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th >Nombre</th>
+      <th >Descripción</th>
+      <th>Ver</th>
+      <th >Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let item of listaR">
+      <th >{{item.nombre}}</th>
+      <td >{{item.descripcion}}</td>
+      <td><button (click)="mostrar(item.id)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        ver
+      </button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteLista(item.nombre)">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!---->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Artista</th>
+            <th scope="col">Albun</th>
+            <th scope="col">AÑO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listCan">
+            <th >{{item.titulo}}</th>
+            <td>{{item.artista}}</td>
+            <td>{{item.albun}}</td>
+            <td>{{item.anno}}</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+</div>
